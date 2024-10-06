@@ -1,9 +1,8 @@
 # Thesis
 2 parts:
-1. Database: Firebase-Thesis is the Cloud Functions code
-- the first commit (9/29) is the mostly-functional Cloud Functions using the emulator
-    issues include: timed out after 60 seconds but pulled ~ a dozen bills
-- we have now decided (9/29) we need to switch to the Blaze plan because with the emulator we can only pull our data into the emulator suite
+1. Database:
+- Firebase-Thesis: is the Google Firebase original version, using Cloud Functions (with an emulator) and a local script (9/29 switched over)
+- MongoDB-Thesis: the functional code using MongoDB which successfully pulls data into the database
 
 2. Website:
 
