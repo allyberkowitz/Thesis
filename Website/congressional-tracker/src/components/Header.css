@@ -1,0 +1,44 @@
+/* General styling for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo styling */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation menu styles */
+.nav-menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make each list item inline */
+.nav-menu li {
+    margin: 0 15px;
+}
+
+/* Style for the buttons inside the menu */
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: rgb(66, 158, 205);
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.menu-button:hover {
+    color: #0071e3; /* Apple's hover color, similar to their site */
+}

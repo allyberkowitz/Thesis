@@ -1,0 +1,33 @@
+.bill-alerts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.alert-card {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.alert-card h3 {
+    margin-bottom: 10px;
+}
+
+.alert-card p {
+    margin-bottom: 15px;
+}
+
+.alert-card a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.alert-card a:hover {
+    text-decoration: underline;
+}
