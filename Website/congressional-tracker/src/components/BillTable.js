@@ -1,10 +1,11 @@
 import React from 'react';
-import './BillTable.css'; // Make sure to create and include this CSS file
+import './BillTable.css'; 
 
 const BillTable = () => {
     const bills = [
         { name: 'H.R.2 - Secure the Border Act of 2023', date: '05/16/2023', congress: '118th' },
-        { name: 'H.R.82 - Social Security Fairness Act of 2023', date: '01/09/2023', congress: '118th' }
+        { name: 'H.R.82 - Social Security Fairness Act of 2023', date: '01/09/2023', congress: '118th' },
+        { name: 'H.R.210 - Rural STEM Education Research Act', date: '01/05/2021', congress: '117th'}
     ];
 
     return (
@@ -20,7 +21,11 @@ const BillTable = () => {
                 <tbody>
                     {bills.map((bill, index) => (
                         <tr key={index}>
-                            <td>{bill.name}</td>
+                            <td>
+                                <a href={`/bill/${index}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    {bill.name}
+                                </a>
+                            </td>
                             <td>{bill.date}</td>
                             <td>{bill.congress}</td>
                         </tr>

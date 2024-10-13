@@ -4,17 +4,27 @@ import BillAlerts from './components/BillAlerts';
 import Filters from './components/Filters';
 import BillTable from './components/BillTable';
 import Footer from './components/Footer';
+import BillDetails from './components/BillDetails'; 
 
 function App() {
+    const path = window.location.pathname;
+    const isBillDetailsPage = path.startsWith('/bill/');
+
     return (
         <div className="App">
             <Header />
             <main>
-                <h1 className="see-whats-new">See What’s New!</h1>
-                <BillAlerts />
-                <Filters />
-                <h2>10 Most Recent Bill Updates</h2>
-                <BillTable />
+                {isBillDetailsPage ? (
+                    <BillDetails />
+                ) : (
+                    <>
+                        <h1 className="see-whats-new">See What’s New!</h1>
+                        <BillAlerts />
+                        <Filters />
+                        <h2>10 Most Recent Bill Updates</h2>
+                        <BillTable />
+                    </>
+                )}
             </main>
             <Footer />
         </div>

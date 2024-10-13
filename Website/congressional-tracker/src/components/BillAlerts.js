@@ -14,7 +14,7 @@ const BillAlerts = () => {
                 <div key={index} className="alert-card">
                     <h3>{alert.title}</h3>
                     <p>{alert.description}</p>
-                    <a href="#">Learn More</a>
+                    <a href={`/bill/${index}`}>Learn More</a>
                 </div>
             ))}
         </div>
