@@ -87,13 +87,20 @@ async function fetchMathBills() {
                 const summary = (bill.text || '').toLowerCase();
                 const congressYr = bill.bill?.congress || 'N/A';
                 
+                // Create an array to store matched keywords
+                const matchedKeywords = keywords
+                    .filter(kw => kw.test(title) || kw.test(summary))
+                    .map(kw => kw.source); // Get the keyword string
+                
+                // If keywords are found, join them into a string, otherwise set it to null
+                const foundKeywords = matchedKeywords.length > 0 ? matchedKeywords.join(', ') : null;
+
                 // Check if any keywords are matched
-                const foundKeywords = keywords.some(kw => kw.test(title) || kw.test(summary));
                 console.log('Bill:', bill);
                 console.log('Keywords Matched:', foundKeywords);
                 if (foundKeywords && parseInt(congressYr) > 116) {
                     // Insert into MongoDB
-                    await db.collection('ThesisDBCollection').insertOne({
+                    await db.collection('thesisdbcollections').insertOne({
                         bill,
                         keywordsMatched: foundKeywords
                     });
@@ -116,7 +123,7 @@ async function fetchMathBills() {
     }
 }
 
-// // Function to start the process every 24 hours (can be adjusted)
+// Function to start the process every 24 hours (can be adjusted)
 // cron.schedule('0 0 * * *', async () => {
 //     console.log('Fetching Congress data...');
 //     await fetchMathBills();
@@ -126,9 +133,7 @@ async function fetchMathBills() {
 async function mainProcess() {
     try {
         await connectToMongoDB();
-        console.log('Ready to fetch data.');
         await fetchMathBills();  // Ensure fetchMathBills is awaited
-        console.log('Fetching completed.');
     } catch (error) {
         console.error('Error during initial connection or fetch:', error);
     } finally {
