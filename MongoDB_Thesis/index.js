@@ -1,18 +1,20 @@
-// October 4, 2024
-// Thesis in MongoDB
+// October 24, 2024
+// Thesis Fall 2024
 // Ally Berkowitz and Andrew Hadden
-
-// Idea: have a set of keywords/all parameters on MongoDB or the website that allows us to 
-//   have a dynamic set of bills -- would need to be connected to this script dynamically
+// Description: Pulling data via API into MongoDB
 
 import { MongoClient, ServerApiVersion } from "mongodb";
-import fetch from "node-fetch";  // Import node-fetch to use fetch
+import fetch from "node-fetch";
+import dotenv from "dotenv";
 // import cron from "node-cron"; // For scheduling the job
 
-// MongoDB connection URI
-const url = "mongodb+srv://aaberkow:allyandrew@thesis-cluster.l0s0s.mongodb.net/?retryWrites=true&w=majority&appName=Thesis-Cluster";
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(url, {
+// Load environment variables from .env file
+dotenv.config();
+const hidden_url = process.env.MONGODB_URI;
+const hidden_key = process.env.API_KEY;
+
+// Create MongoClient with a MongoClientOptions object to set the stable API version
+const client = new MongoClient(hidden_url, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -20,10 +22,8 @@ const client = new MongoClient(url, {
     }
   });
 
-// Create 
 let db;
 
-const key = "hPjeYs0jDyrLw8iuE77Zi8srMdoVkbfDPYGKCr4D"; // our API key
 const fromDate = "2021-01-01T00:00:00Z";
 const toDate = "2024-09-22T00:00:00Z";
 const sortOrder = "updateDate+asc";
@@ -38,13 +38,6 @@ const keywords = [
     /\bstem education\b/i,
     /\bmathematicians\b/i,
 ];
-
-// Other keywords: 
-// /\bstem\b/i
-// /\bfunding to national science foundation\b/i
-// /\bdirector of national science foundation\b/i
-// /\boffice of personnel management \(hire more mathematicians\)\b/i
-// /\bdepartment of education\b/i
 
 // Connect to MongoDB and select the collection
 async function connectToMongoDB() {
@@ -61,17 +54,16 @@ async function connectToMongoDB() {
 
 // Function to fetch and store Congress bills
 async function fetchMathBills() {
-    // Check if the database connection is established
     if (!db) {
         console.error('Database connection not established');
         return;
     }
 
     while (true) {
-        const APIurl = `https://api.congress.gov/v3/summaries?fromDateTime=${fromDate}&toDateTime=${toDate}&sort=${sortOrder}&api_key=${key}&limit=${limit}&offset=${offset}`;
+        const APIurl = `https://api.congress.gov/v3/summaries?fromDateTime=${fromDate}&toDateTime=${toDate}&sort=${sortOrder}&api_key=${hidden_key}&limit=${limit}&offset=${offset}`;
         
         console.log('API URL:', APIurl);
-        console.log({ fromDate, toDate, sortOrder, key, limit, offset });
+        console.log({ fromDate, toDate, sortOrder, hidden_key, limit, offset });
 
         try {
             const response = await fetch(APIurl);
