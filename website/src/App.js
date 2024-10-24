@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import BillAlerts from './components/BillAlerts';
 import Filters from './components/Filters';
@@ -8,8 +8,24 @@ import BillDetails from './components/BillDetails';
 import DataFetch from './DataFetch'; // Import the DataFetch file
 
 function App() {
+    const [data, setData] = useState([]); // State to store fetched data
     const path = window.location.pathname;
     const isBillDetailsPage = path.startsWith('/bill/');
+
+    // Data fetching logic moved here
+    // useEffect(() => {
+    //     fetch('http://localhost:3002/data')
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! status: ${response.status}`);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             setData(data); // Store fetched data
+    //         })
+    //         .catch((error) => console.error('Error fetching data:', error));
+    // }, []);
 
     return (
         <div className="App">
@@ -23,8 +39,7 @@ function App() {
                         <BillAlerts />
                         <Filters />
                         <h2>10 Most Recent Bill Updates</h2>
-                        <BillTable />
-                        <DataFetch /> {/* Using the DataFetch here */}
+                        <BillTable data={data} /> {/* Pass fetched data to BillTable */}
                     </>
                 )}
             </main>
