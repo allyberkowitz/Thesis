@@ -1,4 +1,7 @@
-// to get the data instead of putting it in index.html bc React doesn't allow that
+// October 24, 2024
+// Thesis Fall 2024
+// Ally Berkowitz and Andrew Hadden
+// Description: Attaching MongoDB data with Express, and printing is legibly
 
 // put this into App.js?? to combine? or make this the bill table...
 import React, { useEffect, useState } from 'react';
@@ -15,14 +18,15 @@ const DataFetcher = () => {
         return response.json();
       })
       .then((data) => {
+        console.log("Fetched Data:", data);
         setData(data);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  return (
+  return ( 
     <div>
-      <h1>Data from MongoDB</h1>
+      <h1>Data from MongoDB</h1> 
       <div id="data-container">
         {data.map((item, index) => (
           <div key={index}>

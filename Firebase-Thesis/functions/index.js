@@ -28,7 +28,7 @@ const keywords = [
     /\bdepartment of education\b/i
 ];
 
-const key = "hPjeYs0jDyrLw8iuE77Zi8srMdoVkbfDPYGKCr4D"; // our API key
+// const key = **removed**
 const fromDate = "2021-01-01T00:00:00Z";
 const toDate = "2024-09-22T00:00:00Z";
 const sortOrder = "updateDate+asc";
@@ -37,23 +37,21 @@ let offset = 0;
 
 // Pull data every 24 hours
 // exports.fetchCongressData = functions.pubsub.schedule('every 24 hours').onRun(async (context) => {
-exports.fetchCongressData = functions.https.onRequest(async (req, res) => {
+exports.fetchCongressData = functions.https.onRequest(async (request, response) => {
     console.log('Start')
     try {
         await fetchMathBills(); // fetch data from api and let the fetchMathBills function add to db
         console.log('Congress data successfully stored in Firestore');
-        res.send('Data added to live Firestore');
-        // return null; // return, indicating function is complete
+        response.send('Data added to live Firestore');
     
     } catch (error) {
         console.error('Error fetching or storing Congress data:', error);
-        res.status(500).send('Error fetching or storing Congress data');
+        response.status(500).send('Error fetching or storing Congress data');
     }
     console.log('End')
-    // return null;  // return, indicating function is complete
 });
 
-// function to fetch data from Congress.gov API
+// Function to fetch data from Congress.gov API
 async function fetchMathBills() {
     while (true) { // consistently run until either break occurs -- maybe switch?
         const url = `https://api.congress.gov/v3/summaries?fromDateTime=${fromDate}&toDateTime=${toDate}&sort=${sortOrder}&api_key=${key}&limit=${limit}&offset=${offset}`;
@@ -94,6 +92,5 @@ async function fetchMathBills() {
             break;
         }
     }
-
     // return mathBills;
 }

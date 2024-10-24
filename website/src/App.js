@@ -1,4 +1,11 @@
-import React, { useEffect, useState } from 'react';
+// October 24, 2024
+// Thesis Fall 2024
+// Ally Berkowitz and Andrew Hadden
+// Description: The front-page content of the website, attaching MongoDB data with Express--
+//      as an API-- to the website.
+
+import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import BillAlerts from './components/BillAlerts';
 import Filters from './components/Filters';
@@ -8,7 +15,7 @@ import BillDetails from './components/BillDetails';
 import DataFetch from './DataFetch'; // Import the DataFetch file
 
 function App() {
-    const [data, setData] = useState([]); // State to store fetched data
+    // const [data, setData] = useState([]); // State to store fetched data
     const path = window.location.pathname;
     const isBillDetailsPage = path.startsWith('/bill/');
 
@@ -39,7 +46,9 @@ function App() {
                         <BillAlerts />
                         <Filters />
                         <h2>10 Most Recent Bill Updates</h2>
-                        <BillTable data={data} /> {/* Pass fetched data to BillTable */}
+                        <BillTable />
+                        <DataFetch />
+                        {/* <BillTable data={data} /> Pass fetched data to BillTable */}
                     </>
                 )}
             </main>
