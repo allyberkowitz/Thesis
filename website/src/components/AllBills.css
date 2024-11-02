@@ -1,0 +1,35 @@
+.all-bills-title {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.all-bills-subtitle {
+    margin-top: 10px;
+    /* margin-bottom: 40px; */
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.bill-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bill-table th, .bill-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.table-container {
+    margin: 20px auto;
+    width: 80%;
+}

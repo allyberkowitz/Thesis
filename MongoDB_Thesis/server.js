@@ -9,7 +9,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'; // Allow cross-origin requests -- maybe unnecessary?
-// import path from 'path'; // maybe don't need
+// import path from 'path'; // don't need
 import dotenv from "dotenv";
 // import cron from "node-cron"; // For scheduling the job
 

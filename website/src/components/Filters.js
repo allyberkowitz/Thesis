@@ -17,7 +17,7 @@ const Filters = () => {
             </select>
             <input
                 type="text"
-                placeholder={`Search ${category.toLowerCase()}`}
+                placeholder={`Search all bills`}
                 className="search-input"
             />
             <button className="search-button">Search</button>
