@@ -11,8 +11,8 @@ import AboutUs from './components/AboutUs';
 import './App.css';
 
 function App() {
-    const path = window.location.pathname;
-    const isBillDetailsPage = path.startsWith('/bill/');
+    // const path = window.location.pathname;
+    // const isBillDetailsPage = path.startsWith('/bill/');
 
     const [data, setData] = useState([]); // State to store fetched data
 

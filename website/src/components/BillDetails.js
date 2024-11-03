@@ -1,8 +1,12 @@
-// BillDetails.js
+// website/src/components/BillDetails.js
 import React from 'react';
 import './BillDetails.css'; 
 import { useParams } from 'react-router-dom';
-// import { isHtmlElement } from 'react-router-dom/dist/dom';
+
+const cleanText = (text) => {
+    const htmlRemoved = text.replace(/<[^>]*>/g, '');
+    return htmlRemoved.replace(/\\b/g, '').trim(); // trim() removes leading/trailing spaces
+};
 
 const BillDetails = ({ data }) => {
     const { id } = useParams();
@@ -14,46 +18,33 @@ const BillDetails = ({ data }) => {
 
     return (
         <div className="bill-details">
-            <h2>{bill.bill.bill.type}.{bill.bill.bill.number}: {bill.bill.bill.title}</h2>
-            <p className="congress">Congressional Year: {bill.bill.bill.congress}</p>
+            <h2 className="bill-title">
+                {bill.bill.bill.type}.{bill.bill.bill.number}: {bill.bill.bill.title}
+            </h2>
+            <p className="congress">{bill.bill.bill.congress}th Congressional Year</p>
             <div className="sponsor">
-                {/* <strong>Sponsor:</strong> {bill.sponsor} (Introduced {bill.introducedDate})<br/> */}
-                {/* <strong>Committee:</strong> {bill.committee}<br/> */}
-                <strong>Latest Action Date:</strong> {bill.bill.actionDate} <br/>
-                <strong>Latest Action:</strong> {bill.bill.actionDesc}
+                {/* How do we get a sponsor or committee? */}
+                <strong>Origin Chamber:</strong> {bill.bill.bill.originChamber} <br/>
+                {/* <strong>Latest Action:</strong> {bill.bill.actionDesc} ({bill.bill.actionDate}) <br/> */}
+                <strong>Current Chamber:</strong> {bill.bill.currentChamber} <br/>
             </div>
             <div className="tracker">
-                <button>Introduced</button> ➜ 
-                <button>Passed House</button> ➜ 
-                <button>Passed Senate</button> ➜ 
-                <button>To President</button> ➜ 
-                <button>Became Law</button>
+                <button><strong>Latest Action:</strong> {bill.bill.actionDesc} ({bill.bill.actionDate}) <br/></button>
+                {/* <button>Introduced</button>➜
+                <button>Passed House</button>➜
+                <button>Passed Senate</button>➜
+                <button>To President</button>➜
+                <button>Became Law</button> */}
+            </div>
+            <div className="keywords">
+                <strong>Keywords:</strong> {Array.isArray(bill.keywordsMatched) && bill.keywordsMatched.length > 0 
+                ? bill.keywordsMatched.map(keyword => cleanText(keyword)).join(', ') 
+                : 'N/A'}
             </div>
             <div className="summary">
                 <h3>Summary:</h3>
-                <p>{bill.bill?.text || "Summary Not Available"}</p>
+                <p>{cleanText(bill.bill?.text) || "Summary Not Available"}</p>
             </div>
-            {/* <div className="timeline">
-                <h3>Timeline of Actions</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Actions</th>
-                            <th>Action By</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {bill.actions.map((action, index) => (
-                            <tr key={index}>
-                                <td>{action.date}</td>
-                                <td>{action.action}</td>
-                                <td>{action.actionBy}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div> */}
             <a 
                 href={`https://www.congress.gov/bill/${bill.bill?.bill?.congress}/${
                     bill.bill?.bill?.type === "HR" ? "house-bill" :
