@@ -1,4 +1,14 @@
 /* Container to center the table */
+:root {
+    --deep-orange: #E43D12;
+    --warm-pink: #dd4b68;
+    --light-pink: #ffb6c6;
+    --golden-yellow: #f3c456;
+    --soft-tan: #f3e7de;
+    --white: #ffffff;
+    --text-dark: #453636;
+}
+
 .table-container {
     margin: 20px auto;
     width: 80%;
@@ -9,37 +19,23 @@
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    background-color: #f8f8f8;
+    background-color: var(--white);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
 }
 
 /* Table header styling */
 .bill-table th {
-    background-color: #0071e3;
     color: white;
     padding: 12px;
-    /* text-transform: uppercase; */
-    font-size: 16px;
+    font-size: 17px;
     white-space: nowrap;
+    background-color: var(--warm-pink);
 }
 
-/* Table data styling */
-.bill-table td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Row hover effect */
-.bill-table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Make the table responsive */
-@media (max-width: 768px) {
-    .bill-table th, .bill-table td {
-        font-size: 12px;
-        padding: 8px;
-    }
+.bill-table a:hover {
+    text-decoration: underline !important;
+    color: var(--warm-pink) !important;
 }

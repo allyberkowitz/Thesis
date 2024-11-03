@@ -1,16 +1,39 @@
-.all-bills-title {
-    margin-top: 40px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.6rem;
+:root {
+    --deep-orange: #E43D12;
+    --warm-pink: #dd4b68;
+    --light-pink: #ffb6c6;
+    --golden-yellow: #f3c456;
+    --soft-tan: #f3e7de;
+    --white: #ffffff;
+    --text-dark: #453636;
 }
 
-.all-bills-subtitle {
-    margin-top: 10px;
-    /* margin-bottom: 40px; */
+.all-bills-title {
+    /* margin: 55px 15%; */
+    /* margin: 0px; */
+    margin-top: 70px;
+    margin-bottom: 20px;
     text-align: center;
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 1.8rem;
+    /* padding: 20px; */
+    /* margin: 15%;
+    /* background-color: var(--white); */
+    color: var(--deep-orange);
+    /* border-radius: 8px; */
+}
+
+.all-bills-subtitle1 {
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.all-bills-subtitle2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
     font-size: 1.2rem;
 }
 
@@ -18,7 +41,7 @@
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    background-color: #f8f8f8;
+    background-color: var(--white);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,5 +54,5 @@
 
 .table-container {
     margin: 20px auto;
-    width: 80%;
+    width: 85%;
 }

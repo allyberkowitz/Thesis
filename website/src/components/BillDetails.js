@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 
 const BillDetails = ({ data }) => {
     const { id } = useParams();
-    // const bill = data[id];
     const bill = data.find(b => b._id === id);
 
     if (!bill) {
@@ -15,7 +14,7 @@ const BillDetails = ({ data }) => {
 
     return (
         <div className="bill-details">
-            <h2>{bill.bill.bill.originChamberCode}.{bill.bill.bill.number}: {bill.bill.bill.title}</h2>
+            <h2>{bill.bill.bill.type}.{bill.bill.bill.number}: {bill.bill.bill.title}</h2>
             <p className="congress">Congressional Year: {bill.bill.bill.congress}</p>
             <div className="sponsor">
                 {/* <strong>Sponsor:</strong> {bill.sponsor} (Introduced {bill.introducedDate})<br/> */}
@@ -56,7 +55,10 @@ const BillDetails = ({ data }) => {
                 </table>
             </div> */}
             <a 
-                href={`https://www.congress.gov/bill/${bill.bill?.bill?.congress}/${bill.bill?.bill?.originChamber === "House" ? "house-bill" : "senate-bill"}/${bill.bill?.bill?.number}`}
+                href={`https://www.congress.gov/bill/${bill.bill?.bill?.congress}/${
+                    bill.bill?.bill?.type === "HR" ? "house-bill" :
+                    bill.bill?.bill?.type === "HRES" ? "house-resolution" : "senate-bill"
+                }/${bill.bill?.bill?.number}`}
                 target="_blank"
                 rel="noopener noreferrer" 
                 style={{ textDecoration: 'none' }}

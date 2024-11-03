@@ -13,6 +13,7 @@ import BillTable from './components/BillTable';
 import Footer from './components/Footer';
 import BillDetails from './components/BillDetails'; 
 import AllBills from './components/AllBills';
+import AboutUs from './components/AboutUs';
 import './App.css';
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                         />
                         <Route path="/bill/:id" element={<BillDetails data={data} />} />
                         <Route path="/all-bills" element={<AllBills data={data} />} />
+                        <Route path="/about-us" element={<AboutUs />} />
                     </Routes>
                 </main>
                 <Footer />

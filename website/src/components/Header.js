@@ -13,8 +13,12 @@ const Header = () => (
                 <button className="menu-button">
                     <Link to="/all-bills">All Bills</Link>
                 </button>
-                <li><button className="menu-button">About Us</button></li>
-                <li><button className="menu-button">Sign Up</button></li>
+                <button className="menu-button">
+                    <Link to="/about-us">About Us</Link>
+                </button>
+                <button className="menu-button">
+                    <Link to="/sign-up">Sign Up</Link>
+                </button>
             </ul>
         </nav>
     </header>
