@@ -56,3 +56,17 @@
     margin: 20px auto;
     width: 85%;
 }
+.search-bar-container {
+    width: 85%; /* Matches the width of .table-container */
+    margin: 0 auto 20px auto; /* Center the search bar and add bottom margin */
+    text-align: center; /* Center-aligns the content */
+}
+
+.search-input {
+    width: 100%; /* Fills the width of .search-bar-container */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

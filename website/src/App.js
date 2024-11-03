@@ -1,9 +1,3 @@
-// October 24, 2024
-// Thesis Fall 2024
-// Ally Berkowitz and Andrew Hadden
-// Description: The front-page content of the website, attaching MongoDB data with Express--
-//      as an API-- to the website.
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -48,15 +42,16 @@ function App() {
                             element={
                                 <>
                                 <h1 className="alert-header">See What’s New!</h1>
-                                <BillAlerts />
+                                <BillAlerts data={data} /> {/* Pass data to BillAlerts */}
                                 <h2 className="table-header">10 Most Recent Bill Actions</h2>
-                                <Filters />
-                                <BillTable data={data} />
+                                <Filters data={data} /> {/* Pass data to Filters */}
+                                <BillTable data={data} /> {/* Pass data to BillTable */}
                                 </>
                             }
                         />
                         <Route path="/bill/:id" element={<BillDetails data={data} />} />
                         <Route path="/all-bills" element={<AllBills data={data} />} />
+                        <Route path="/filters" element={<Filters data={data} />} /> {/* Optional separate Filters page */}
                         <Route path="/about-us" element={<AboutUs />} />
                     </Routes>
                 </main>

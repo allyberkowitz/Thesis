@@ -1,20 +1,8 @@
-// Footer.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import './Footer.css';
 
 const Footer = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // useEffect(() => {
-    //     // Load the Mailchimp validation script after the component mounts
-    //     const script = document.createElement("script");
-    //     script.src = "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js";
-    //     script.async = true;
-    //     document.body.appendChild(script);
-
-    //     return () => {
-    //         document.body.removeChild(script);
-    //     };
-    // }, []);
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -36,7 +24,7 @@ const Footer = () => {
                                 rel="stylesheet"
                                 type="text/css"
                             />
-                            <div id="mc_embed_signup" style={{ background: "#fff", font: "14px Helvetica,Arial,sans-serif", width: "600px" }}>
+                            <div id="mc_embed_signup" style={{ background: "#fff", font: "14px Helvetica,Arial,sans-serif", width: "100%" }}>
                                 <form
                                     action="https://hamilton.us17.list-manage.com/subscribe/post?u=5655c218737b1c2830a7677a1&amp;id=568adfc2bd&amp;f_id=0058c3e1f0"
                                     method="post"
